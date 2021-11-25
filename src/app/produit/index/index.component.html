@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-center">Angular 12 CRUD Démonstration</h1>
+
+  <div class="my-3 float-end">
+    <button class="btn btn-success" routerLink="/produit/create/" type="button">Créer un nouveau Produit</button>
+  </div>
+
+  <table aria-describedby="Tableau des Produits" class="table table-bordered">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Libellé</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Action</th>
+    </tr>
+    <tr *ngFor="let produit of produits">
+      <td>{{produit.id}}</td>
+      <td>{{produit.libelle}}</td>
+      <td>{{produit.categorie.libelle}}</td>
+      <td>
+        <div>
+          <button [routerLink]="['/produit', produit.id, 'edit']" class="btn btn-primary" type="button">Editer</button>
+          <button (click)="delete(produit.id)" class="btn btn-danger mx-1" type="button">Supprimer</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</div>

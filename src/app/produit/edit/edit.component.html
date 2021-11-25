@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Editer un Produit</h1>
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-secondary" routerLink="/produit/index">Retour</button>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="editForm">
+
+    <div class="form-group">
+      <label for="libelle">Libelle:</label>
+      <input [(ngModel)]="produit.libelle" class="form-control" formControlName="libelle" id="libelle" type="text">
+      <div *ngIf="formControls.libelle.touched && formControls.libelle.invalid" class="alert alert-danger">
+        <div *ngIf="formControls.libelle.errors?.required">Le Libellé est un champs requis.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="libelle_categorie">Libelle de la catégorie:</label>
+      <input [(ngModel)]="produit.categorie.libelle" class="form-control" formControlName="libelleCategorie"
+             id="libelle_categorie" type="text">
+      <div *ngIf="formControls.libelleCategorie.touched && formControls.libelleCategorie.invalid"
+           class="alert alert-danger">
+        <div *ngIf="formControls.libelleCategorie.errors?.required">Le Libellé de la catégorie est un champs requis.
+        </div>
+      </div>
+    </div>
+
+    <button [disabled]="!editForm.valid" class="btn btn-primary my-3" type="submit">Submit</button>
+  </form>
+
+</div>
